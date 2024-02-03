@@ -1,9 +1,9 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
-export default function NaviButton({ label, navigate }) {
+export default function NaviButton({ label, nav }) {
   return (
     <View style={styles.container}>
-      <Pressable style={styles.btn} onPress={()=>navigate(label)}>
+      <Pressable style={styles.btn} onPress={()=>nav(label)}>
         <Text style={styles.btnTxt}>{label}</Text>
       </Pressable>
     </View>

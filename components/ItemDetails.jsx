@@ -9,11 +9,11 @@ import {
   View,
 } from "react-native";
 
-export default function ItemDetails() {
+export default function ItemDetails({route, navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <Pressable
-        onPress={() => console.warn("Yo! Go Back!")}
+        onPress={() => navigation.goBack()}
         style={styles.header}
       >
         <MaterialIcons name="arrow-back" size={24} color="black" />
@@ -34,8 +34,9 @@ export default function ItemDetails() {
             height: undefined,
             flex: 1,
             resizeMode: "contain",
+            borderRadius:50
           }}
-        />
+          />
       </View>
     </SafeAreaView>
   );
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     top: StatusBar.currentHeight + 10,
-    justifyContent: "space-evenly",
+    justifyContent: "space-evenly"
   },
   header: {
     flexDirection: "row",
@@ -60,6 +61,7 @@ const styles = StyleSheet.create({
   contentTitle: {
     fontFamily: "lexend",
     fontSize: 22,
+    alignSelf:'center',
     color: "#3a5" && "#a01a",
   },
   contentBody: {
@@ -69,7 +71,7 @@ const styles = StyleSheet.create({
   },
   imgContent: {
     flex: 2 / 4,
-    backgroundColor: "#333",
     marginBottom: 20,
+    borderRadius:50
   },
 });

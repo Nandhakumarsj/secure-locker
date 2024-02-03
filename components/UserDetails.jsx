@@ -3,7 +3,7 @@ import { Image, View, Text, StyleSheet } from "react-native";
 export default function UserDetails() {
   return (
     <View style={styles.container}>
-      <View>
+      <View style={{justifyContent:'center'}}>
         <Image source={require("../assets/imgs/man1.jpg")} style={styles.img} />
       </View>
       <View style={styles.details}>
@@ -33,10 +33,16 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   img: {
-    width: 180,
-    flex: 1,
-    height: undefined,
-    resizeMode: "contain",
+    // width: 180,
+    // flex: 1,
+    // height: undefined,
+    // resizeMode: "contain",
+    width: 200,
+    height: 200,
+    borderRadius: 150 / 2,
+    overflow: "hidden",
+    borderWidth: 1,
+    borderColor: "#202"
   },
   details: {
     flexDirection: "column",

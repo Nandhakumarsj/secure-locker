@@ -10,11 +10,11 @@ import {
 } from "react-native";
 import UserDetails from "../components/UserDetails";
 
-export default function AuthorizedUsers() {
+export default function AuthorizedUsers({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Pressable onPress={() => console.warn("Yo!")}>
+        <Pressable onPress={() => navigation.navigate("Home")}>
           <Text style={styles.headerTxt}>
             <AntDesign name="home" size={25} color="#f89" />
             {" Home"}

@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import AccessItem from "../components/AccessItem";
 
-export default function AccessHistory() {
+export default function AccessHistory({navigation}) {
   // { navigation }
   return (
     <SafeAreaView
@@ -19,7 +19,7 @@ export default function AccessHistory() {
     >
       <View style={styles.header}>
         <Pressable
-          onPress={() => console.warn("Yo!")}
+          onPress={() => navigation.navigate("Home")}
           style={{ marginTop: 20 }}
         >
           <Text style={styles.headerTxt}>
@@ -31,19 +31,19 @@ export default function AccessHistory() {
       </View>
 
       <ScrollView style={styles.itemList}>
-        <AccessItem />
-        <AccessItem />
-        <AccessItem />
-        <AccessItem />
-        <AccessItem />
-        <AccessItem />
-        <AccessItem />
-        <AccessItem />
-        <AccessItem />
-        <AccessItem />
-        <AccessItem />
-        <AccessItem />
-        <AccessItem />
+        <AccessItem navigation={navigation}/>
+        <AccessItem navigation={navigation}/>
+        <AccessItem navigation={navigation}/>
+        <AccessItem navigation={navigation}/>
+        <AccessItem navigation={navigation}/>
+        <AccessItem navigation={navigation}/>
+        <AccessItem navigation={navigation}/>
+        <AccessItem navigation={navigation}/>
+        <AccessItem navigation={navigation}/>
+        <AccessItem navigation={navigation}/>
+        <AccessItem navigation={navigation}/>
+        <AccessItem navigation={navigation}/>
+        <AccessItem navigation={navigation}/>
       </ScrollView>
     </SafeAreaView>
   );
