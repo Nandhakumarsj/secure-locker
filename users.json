@@ -1,0 +1,14 @@
+{
+    "Users": {
+        "Job" : {
+            "name" : "Job J",
+            "profile" : "./assets/imgs/job.jpg",
+            "dob": "01/01/2003"
+        },
+        "Chiran" : {
+            "name" : "Chiranchievi S",
+            "profile" : "./assets/imgs/chiran.jpg",
+            "dob": "01/01/2003"
+        }
+    }
+}

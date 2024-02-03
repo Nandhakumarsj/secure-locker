@@ -1,0 +1,12 @@
+{
+    "12:33-02/02/2024": {
+        "authorized": true
+    },
+    "12:50-02/02/2024": {
+        "authorized": false,
+        "img": null
+    },
+    "12:33-03/02/2024": {
+        "authorized": true
+    }
+}
