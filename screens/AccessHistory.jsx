@@ -1,5 +1,6 @@
 import { AntDesign } from "@expo/vector-icons";
 import {
+  FlatList,
   Pressable,
   SafeAreaView,
   ScrollView,
@@ -9,14 +10,19 @@ import {
   View,
 } from "react-native";
 import AccessItem from "../components/AccessItem";
+import accessHistory from "../access-history.json";
 
-export default function AccessHistory({navigation}) {
-  // { navigation }
+export default function AccessHistory({ navigation }) {
+  const history = [];
+  for (const stamp in accessHistory) {
+    history.push({
+      time: accessHistory[stamp].time,
+      authorized: accessHistory[stamp].authorized,
+      date:accessHistory[stamp].date
+    });
+  }
   return (
-    <SafeAreaView
-      // onTouchStart={navigation.navigate("Home")}
-      style={styles.container}
-    >
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Pressable
           onPress={() => navigation.navigate("Home")}
@@ -29,22 +35,16 @@ export default function AccessHistory({navigation}) {
         </Pressable>
         <Text style={styles.headerTxt}>Access History</Text>
       </View>
-
-      <ScrollView style={styles.itemList}>
-        <AccessItem navigation={navigation}/>
-        <AccessItem navigation={navigation}/>
-        <AccessItem navigation={navigation}/>
-        <AccessItem navigation={navigation}/>
-        <AccessItem navigation={navigation}/>
-        <AccessItem navigation={navigation}/>
-        <AccessItem navigation={navigation}/>
-        <AccessItem navigation={navigation}/>
-        <AccessItem navigation={navigation}/>
-        <AccessItem navigation={navigation}/>
-        <AccessItem navigation={navigation}/>
-        <AccessItem navigation={navigation}/>
-        <AccessItem navigation={navigation}/>
-      </ScrollView>
+      <FlatList
+      style={styles.itemList}
+      data={history}
+      renderItem={(timestamp)=><AccessItem
+        navigation={navigation}
+        time={timestamp.item.time}
+        authorized={timestamp.item.authorized}
+        date={timestamp.item.date}
+        />}
+      />
     </SafeAreaView>
   );
 }
@@ -67,8 +67,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   itemList: {
-    flex: 2,
-    flexDirection: "column",
-    margin: 27,
+    marginLeft:25,
+    marginBottom:40
   },
 });

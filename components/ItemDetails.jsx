@@ -10,6 +10,7 @@ import {
 } from "react-native";
 
 export default function ItemDetails({route, navigation}) {
+  const {date, time, authorized} = route.params
   return (
     <SafeAreaView style={styles.container}>
       <Pressable
@@ -19,12 +20,13 @@ export default function ItemDetails({route, navigation}) {
         <MaterialIcons name="arrow-back" size={24} color="black" />
         <Text style={styles.headerTxt}> Back</Text>
       </Pressable>
-      <Text style={styles.contentTitle}>Authorized Person Accessed</Text>
+      { authorized? <Text style={styles.authContentTitle}>Authorized Person Accessed</Text>:
+      <Text style={styles.unAuthContentTitle}>UnAuthorized Person Accessed</Text>}
       <View
         style={{ alignItems: "center", flex: 1 / 5, justifyContent: "center" }}
       >
-        <Text style={styles.contentBody}>Access Time : 12:40 pm</Text>
-        <Text style={styles.contentBody}>Date Accessed : 02/02/2024</Text>
+        <Text style={styles.contentBody}>Access Time : {time}</Text>
+        <Text style={styles.contentBody}>Date Accessed : {date}</Text>
       </View>
       <View style={styles.imgContent}>
         <Image
@@ -58,11 +60,17 @@ const styles = StyleSheet.create({
     fontFamily: "lexend",
     fontSize: 22,
   },
-  contentTitle: {
+  authContentTitle: {
     fontFamily: "lexend",
     fontSize: 22,
     alignSelf:'center',
-    color: "#3a5" && "#a01a",
+    color: "#892",
+  },
+  unAuthContentTitle: {
+    fontFamily: "lexend",
+    fontSize: 22,
+    alignSelf:'center',
+    color:'#a01'
   },
   contentBody: {
     fontFamily: "lexend",

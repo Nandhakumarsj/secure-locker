@@ -1,22 +1,27 @@
 import { Image, View, Text, StyleSheet } from "react-native";
 
-export default function UserDetails() {
+export default function UserDetails({
+  profileName,
+  profileImg,
+  dob,
+  enrolledDate,
+}) {
   return (
     <View style={styles.container}>
-      <View style={{justifyContent:'center'}}>
-        <Image source={require("../assets/imgs/man1.jpg")} style={styles.img} />
+      <View style={{ justifyContent: "center" }}>
+        <Image source={profileImg} style={styles.img} />
       </View>
       <View style={styles.details}>
         <View>
-          <Text style={styles.detailsTxt}>Man 1</Text>
+          <Text style={styles.detailsTxt}>{profileName}</Text>
         </View>
         <View>
           <Text style={styles.detailsTxt}>DOB:</Text>
-          <Text style={styles.detailsTxt}>01/01/2003</Text>
+          <Text style={styles.detailsTxt}>{dob}</Text>
         </View>
         <View>
           <Text style={styles.detailsTxt}>Enrolled Date:</Text>
-          <Text style={styles.detailsTxt}>02/02/2003</Text>
+          <Text style={styles.detailsTxt}>{enrolledDate}</Text>
         </View>
       </View>
     </View>
@@ -38,11 +43,11 @@ const styles = StyleSheet.create({
     // height: undefined,
     // resizeMode: "contain",
     width: 200,
-    height: 200,
+    height: 220,
     borderRadius: 150 / 2,
     overflow: "hidden",
     borderWidth: 1,
-    borderColor: "#202"
+    borderColor: "#202",
   },
   details: {
     flexDirection: "column",
@@ -53,7 +58,7 @@ const styles = StyleSheet.create({
   detailsTxt: {
     fontFamily: "lexend",
     fontWeight: "400",
-    fontSize: 17,
+    fontSize: 18,
   },
   detailsContent: {
     flexDirection: "row",

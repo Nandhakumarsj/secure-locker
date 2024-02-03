@@ -27,7 +27,7 @@ btn: {
 btnTxt: {
       textAlign: "center",
       fontFamily:'lexend',
-    fontSize: 15,
+    fontSize: 17,
     fontWeight: '300'
   },
 });

@@ -1,14 +1,16 @@
 {
     "Users": {
         "Job" : {
+            "id":"1",
             "name" : "Job J",
-            "profile" : "./assets/imgs/job.jpg",
-            "dob": "01/01/2003"
+            "dob": "01/01/2003",
+            "dateEnrolled": "02/02/2024"
         },
         "Chiran" : {
+            "id":"2",
             "name" : "Chiranchievi S",
-            "profile" : "./assets/imgs/chiran.jpg",
-            "dob": "01/01/2003"
+            "dob": "01/01/2003",
+            "dateEnrolled": "02/02/2024"
         }
     }
 }
