@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "489350754075",
+    "project_id": "locker-d2e23",
+    "storage_bucket": "locker-d2e23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:489350754075:android:a0f8b88bfb1d69846c2dbe",
+        "android_client_info": {
+          "package_name": "com.nandhakumarsj.securelocker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUMLTEnoaauhmdNyUT6y8VY8GX-brugNU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
