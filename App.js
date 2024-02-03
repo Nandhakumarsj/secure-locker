@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
 import AccessHistory from "./screens/AccessHistory";
-import AuthorizedUsers from "./screens/AuthorizedUsers";
+import AuthorizedUsers from "./screens/AuthorizedUsers";  
 import ItemDetails from "./components/ItemDetails";
 
 export default function App() {

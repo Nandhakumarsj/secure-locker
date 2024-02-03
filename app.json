@@ -16,7 +16,7 @@
         "expo-font",
         {
           "fonts": [
-            "./assets/fonts/Inter-Black.otf"
+            "./assets/fonts/lexend.ttf"
           ]
         }
       ]
@@ -31,10 +31,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.nandhakumarsj.securelocker"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fecd7d42-7707-4297-a83c-1aa9b9dad11e"
+      }
     }
   }
 }
