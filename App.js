@@ -1,42 +1,129 @@
 import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
-import { StyleSheet, Text, View } from "react-native";
+import { Alert, Platform, StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import * as Notifications from "expo-notifications";
+import * as Device from "expo-device";
+import Constants from "expo-constants";
 import HomeScreen from "./screens/HomeScreen";
 import AccessHistory from "./screens/AccessHistory";
-import AuthorizedUsers from "./screens/AuthorizedUsers";  
+import AuthorizedUsers from "./screens/AuthorizedUsers";
 import ItemDetails from "./components/ItemDetails";
+import { useEffect, useRef, useState } from "react";
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: true,
+  }),
+});
+
+async function registerForPushNotificationsAsync() {
+  let token;
+
+  if (Platform.OS === "android") {
+    Notifications.setNotificationChannelAsync("default", {
+      name: "default",
+      importance: Notifications.AndroidImportance.MAX,
+      vibrationPattern: [0, 250, 250, 250],
+      lightColor: "#FF231F7C",
+    });
+  }
+
+  if (Device.isDevice) {
+    const { status: existingStatus } =
+      await Notifications.getPermissionsAsync();
+    let finalStatus = existingStatus;
+    if (existingStatus !== "granted") {
+      const { status } = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+    if (finalStatus !== "granted") {
+      Alert.alert(
+        "Warning!",
+        "Failed to get push token for push notification!",
+        [{ text: "OK", style: "destructive" }]
+      );
+      return;
+    }
+    token = await Notifications.getExpoPushTokenAsync({
+      projectId: Constants.expoConfig.extra.eas.projectId,
+    });
+    console.log(token);
+  } else {
+    Alert.alert(
+      "Simulation Device Detected!",
+      "Must use physical device for Push Notifications",
+      [{ text: "Understood", style: "cancel" }]
+    );
+  }
+
+  return token.data;
+}
 
 export default function App() {
+  const [expoPushToken, setExpoPushToken] = useState("");
+  const [notification, setNotification] = useState(false);
+  const notificationListener = useRef();
+  const responseListener = useRef();
   const [fontsLoaded] = useFonts({
     lexend: require("./assets/fonts/lexend.ttf"),
   });
-  fontsLoaded && console.log("->Fonts Loaded");
+  useEffect(() => {
+    registerForPushNotificationsAsync().then((token) =>
+      setExpoPushToken(token)
+    );
+
+    notificationListener.current =
+      Notifications.addNotificationReceivedListener((notification) => {
+        setNotification(
+          notification,
+          console.log(notification.request.content)
+        );
+      });
+
+    responseListener.current =
+      Notifications.addNotificationResponseReceivedListener((response) => {
+        console.log(response);
+      });
+
+    return () => {
+      Notifications.removeNotificationSubscription(
+        notificationListener.current
+      );
+      Notifications.removeNotificationSubscription(responseListener.current);
+    };
+  }, []);
   const SecureLockerNavigator = createNativeStackNavigator();
   return (
     <>
       <NavigationContainer>
         <SecureLockerNavigator.Navigator initialRouteName="Home">
-          <SecureLockerNavigator.Screen name="Home" component={HomeScreen} options={{'headerShown':false}} />
+          <SecureLockerNavigator.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{ headerShown: false }}
+          />
           <SecureLockerNavigator.Screen
             name="Authorized Users"
             component={AuthorizedUsers}
-            options={{'headerShown':false}}
+            options={{ headerShown: false }}
           />
           <SecureLockerNavigator.Screen
             name="Access History"
             component={AccessHistory}
-            options={{'headerShown':false}}
+            options={{ headerShown: false }}
           />
           <SecureLockerNavigator.Screen
             name="Item Details"
             component={ItemDetails}
-            options={{'headerShown':false}}
+            options={{ headerShown: false }}
           />
         </SecureLockerNavigator.Navigator>
       </NavigationContainer>
-      <StatusBar style="dark" backgroundColor="#aff" />
+      <StatusBar style="dark" backgroundColor="#1bbf" />
     </>
   );
 }

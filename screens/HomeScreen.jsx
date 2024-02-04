@@ -1,7 +1,6 @@
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import NaviButton from "../components/NaviButton";
 
-
 export default function HomeScreen({ navigation }){
   const navHandler = (label) => {navigation.navigate(label)};
   return (
@@ -10,7 +9,9 @@ export default function HomeScreen({ navigation }){
         <Text style={styles.headerTxt}>Secure Locker</Text>
       </View>
       <View style={styles.navigation}>
-        <NaviButton label="Authorized Users" nav={navHandler} />
+        <NaviButton label="Authorized Users"
+        nav={navHandler}
+        />
         <NaviButton label="Access History" nav={navHandler} />
       </View>
     </SafeAreaView>

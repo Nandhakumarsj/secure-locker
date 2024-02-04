@@ -25,7 +25,7 @@ export default function AccessItem({ navigation, time, authorized, date }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#0bf",
+    backgroundColor: "#123",
     borderRadius: 20,
     borderColor: "#2aaa",
     borderWidth: 2,
@@ -47,6 +47,6 @@ const styles = StyleSheet.create({
   impTxt: {
     fontFamily: "lexend",
     fontSize: 17,
-    color:'#f22'
+    color:'#f52f'
   }
 });
