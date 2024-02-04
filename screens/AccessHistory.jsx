@@ -9,17 +9,24 @@ import {
   View,
 } from "react-native";
 import AccessItem from "../components/AccessItem";
-import accessHistory from "../access-history.json";
+import accessHistory from "../assets/access-history.json";
 
+const history = [];
+for (const stamp in accessHistory) {
+  history.push({
+    time: accessHistory[stamp].time,
+    authorized: accessHistory[stamp].authorized,
+    date:accessHistory[stamp].date,
+    base64: accessHistory[stamp].base64
+  });
+}
+
+function appendHistory(newData){
+  history.push(newData);
+}
+
+export {appendHistory};
 export default function AccessHistory({ navigation }) {
-  const history = [];
-  for (const stamp in accessHistory) {
-    history.push({
-      time: accessHistory[stamp].time,
-      authorized: accessHistory[stamp].authorized,
-      date:accessHistory[stamp].date
-    });
-  }
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -42,7 +49,9 @@ export default function AccessHistory({ navigation }) {
         time={timestamp.item.time}
         authorized={timestamp.item.authorized}
         date={timestamp.item.date}
-        />}
+        res = {timestamp.item.base64}
+        />
+      }
       />
     </SafeAreaView>
   );
@@ -66,7 +75,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   itemList: {
-    marginLeft:25,
-    marginBottom:40
+    marginLeft: 25,
+    marginBottom: 40,
   },
 });

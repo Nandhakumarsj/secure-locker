@@ -10,7 +10,7 @@ import {
 } from "react-native";
 
 export default function ItemDetails({route, navigation}) {
-  const {date, time, authorized} = route.params
+  const {date, time, authorized, res} = route.params
   return (
     <SafeAreaView style={styles.container}>
       <Pressable
@@ -30,7 +30,8 @@ export default function ItemDetails({route, navigation}) {
       </View>
       <View style={styles.imgContent}>
         <Image
-          source={require("../assets/imgs/man2.jpg")}
+          // source={require("../assets/imgs/man2.jpg")}
+          source={{uri:`data:image/png;base64,${res}`}}
           style={{
             width: undefined,
             height: undefined,

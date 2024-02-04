@@ -1,22 +1,22 @@
 import { StatusBar } from "expo-status-bar";
-import { useFonts } from "expo-font";
-import { Alert, Platform, StyleSheet, Text, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { loadAsync } from "expo-font";
 import * as Notifications from "expo-notifications";
 import * as Device from "expo-device";
 import Constants from "expo-constants";
+import { Alert, LogBox, Platform, StyleSheet, Text, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useEffect, useRef, useState } from "react";
 import HomeScreen from "./screens/HomeScreen";
-import AccessHistory from "./screens/AccessHistory";
+import AccessHistory, { appendHistory } from "./screens/AccessHistory";
 import AuthorizedUsers from "./screens/AuthorizedUsers";
 import ItemDetails from "./components/ItemDetails";
-import { useEffect, useRef, useState } from "react";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: true,
-    shouldPlaySound: false,
-    shouldSetBadge: true,
+    shouldPlaySound: true, // Explicit Banner
+    shouldSetBadge: false,
   }),
 });
 
@@ -51,7 +51,6 @@ async function registerForPushNotificationsAsync() {
     token = await Notifications.getExpoPushTokenAsync({
       projectId: Constants.expoConfig.extra.eas.projectId,
     });
-    console.log(token);
   } else {
     Alert.alert(
       "Simulation Device Detected!",
@@ -68,25 +67,39 @@ export default function App() {
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
   const responseListener = useRef();
-  const [fontsLoaded] = useFonts({
-    lexend: require("./assets/fonts/lexend.ttf"),
-  });
+  const loadFonts = async () => {
+    await loadAsync("lexend", require("./assets/fonts/lexend.ttf"));
+  };
+  LogBox.ignoreLogs(["new NativeEventEmitter"]); // Production => Use LogBox.ignoreAllLogs();
   useEffect(() => {
+    loadFonts().then(() => console.log("-> Fonts Loaded"));
     registerForPushNotificationsAsync().then((token) =>
-      setExpoPushToken(token)
+      setExpoPushToken(token, console.log(token))
     );
-
     notificationListener.current =
       Notifications.addNotificationReceivedListener((notification) => {
         setNotification(
-          notification,
-          console.log(notification.request.content)
-        );
+          notification
+          );
+        data = notification.request.content.data;
+        appendHistory({
+          time: data["time"],
+          authorized: data["auth"],
+          date: data['date'],
+          base64: data['base64']
+        });
       });
 
     responseListener.current =
       Notifications.addNotificationResponseReceivedListener((response) => {
-        console.log(response);
+        console.log(response.notification.request.content.data); // Add Access History Item [res.noti.req.con.data]
+        data = response.notification.request.content.data;
+        appendHistory({
+          time: data["time"],
+          authorized: data["auth"],
+          date: data['date'],
+          base64: data['base64']
+        });
       });
 
     return () => {

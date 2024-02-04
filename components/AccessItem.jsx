@@ -1,12 +1,12 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
-export default function AccessItem({ navigation, time, authorized, date }) {
+export default function AccessItem({ navigation, time, authorized, date, res }) {
   const applyStyle = authorized?styles.txt:styles.impTxt
   return (
     <View style={styles.container}>
       <Pressable
         style={styles.select}
-        onPress={() => navigation.navigate("Item Details", {'time':time, 'authorized': authorized, 'date': date})}
+        onPress={() => navigation.navigate("Item Details", {'time':time, 'authorized': authorized, 'date': date, 'res': res})}
       >
         <View>
           { authorized ? <Text style={styles.txt}>Authorized Person Accessed</Text> :

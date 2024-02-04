@@ -9,7 +9,7 @@ import {
   FlatList,
 } from "react-native";
 import UserDetails from "../components/UserDetails";
-import users from "../users.json";
+import users from "../assets/users.json";
 
 const userAssets = {
   1: require("../assets/imgs/man1.jpg"),
