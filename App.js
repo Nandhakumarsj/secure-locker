@@ -70,7 +70,8 @@ export default function App() {
   const loadFonts = async () => {
     await loadAsync("lexend", require("./assets/fonts/lexend.ttf"));
   };
-  LogBox.ignoreLogs(["new NativeEventEmitter"]); // Production => Use LogBox.ignoreAllLogs();
+  LogBox.ignoreLogs(["new NativeEventEmitter"]);
+  LogBox.ignoreAllLogs();
   useEffect(() => {
     loadFonts().then(() => console.log("-> Fonts Loaded"));
     registerForPushNotificationsAsync().then((token) =>
@@ -86,7 +87,7 @@ export default function App() {
           time: data["time"],
           authorized: data["auth"],
           date: data['date'],
-          base64: data['base64']
+          img: data['img']
         });
       });
 
@@ -98,7 +99,7 @@ export default function App() {
           time: data["time"],
           authorized: data["auth"],
           date: data['date'],
-          base64: data['base64']
+          img: data['img']
         });
       });
 

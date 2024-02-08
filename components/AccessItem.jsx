@@ -13,7 +13,7 @@ export default function AccessItem({ navigation, time, authorized, date, res }) 
           <Text style={styles.impTxt}>UnAuthorized Person Accessed</Text>}
         </View>
         <View>
-          <Text style={applyStyle}>{time} pm</Text>
+          <Text style={applyStyle}>{time}</Text>
         </View>
         <View>
           <Text style={applyStyle}>{date}</Text>

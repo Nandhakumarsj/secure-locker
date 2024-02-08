@@ -17,7 +17,7 @@ for (const stamp in accessHistory) {
     time: accessHistory[stamp].time,
     authorized: accessHistory[stamp].authorized,
     date:accessHistory[stamp].date,
-    base64: accessHistory[stamp].base64
+    img: accessHistory[stamp].img
   });
 }
 
@@ -49,7 +49,7 @@ export default function AccessHistory({ navigation }) {
         time={timestamp.item.time}
         authorized={timestamp.item.authorized}
         date={timestamp.item.date}
-        res = {timestamp.item.base64}
+        res = {timestamp.item.img}
         />
       }
       />

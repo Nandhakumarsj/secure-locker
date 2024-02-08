@@ -30,8 +30,8 @@ const styles = StyleSheet.create({
   },
   headerTxt: {
     fontFamily: "lexend",
-    fontSize: 22,
-    fontWeight: "400",
+    fontSize: 24,
+    fontWeight: "500",
   },
   navigation: {
     flex: 2,
