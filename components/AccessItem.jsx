@@ -1,16 +1,32 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
-export default function AccessItem({ navigation, time, authorized, date, res }) {
-  const applyStyle = authorized?styles.txt:styles.impTxt
+export default function AccessItem({
+  navigation,
+  time,
+  authorized,
+  date,
+  res,
+}) {
+  const applyStyle = authorized ? styles.txt : styles.impTxt;
   return (
     <View style={styles.container}>
       <Pressable
         style={styles.select}
-        onPress={() => navigation.navigate("Item Details", {'time':time, 'authorized': authorized, 'date': date, 'res': res})}
+        onPress={() =>
+          navigation.navigate("Item Details", {
+            time: time,
+            authorized: authorized,
+            date: date,
+            res: res,
+          })
+        }
       >
         <View>
-          { authorized ? <Text style={styles.txt}>Authorized Person Accessed</Text> :
-          <Text style={styles.impTxt}>UnAuthorized Person Accessed</Text>}
+          {authorized ? (
+            <Text style={styles.txt}>Authorized Person Accessed</Text>
+          ) : (
+            <Text style={styles.impTxt}>UnAuthorized Person Accessed</Text>
+          )}
         </View>
         <View>
           <Text style={applyStyle}>{time}</Text>
@@ -29,7 +45,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderColor: "#2aaa",
     borderWidth: 2,
-    marginBottom: 15
+    marginBottom: 15,
   },
   select: {
     width: 300,
@@ -42,11 +58,11 @@ const styles = StyleSheet.create({
   txt: {
     fontFamily: "lexend",
     fontSize: 17,
-    color: '#afa'
+    color: "#afa",
   },
   impTxt: {
     fontFamily: "lexend",
     fontSize: 17,
-    color:'#f52f'
-  }
+    color: "#f52f",
+  },
 });

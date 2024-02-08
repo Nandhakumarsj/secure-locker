@@ -16,16 +16,16 @@ for (const stamp in accessHistory) {
   history.push({
     time: accessHistory[stamp].time,
     authorized: accessHistory[stamp].authorized,
-    date:accessHistory[stamp].date,
-    img: accessHistory[stamp].img
+    date: accessHistory[stamp].date,
+    img: accessHistory[stamp].img,
   });
 }
 
-function appendHistory(newData){
+function appendHistory(newData) {
   history.push(newData);
 }
 
-export {appendHistory};
+export { appendHistory };
 export default function AccessHistory({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
@@ -42,16 +42,17 @@ export default function AccessHistory({ navigation }) {
         <Text style={styles.headerTxt}>Access History</Text>
       </View>
       <FlatList
-      style={styles.itemList}
-      data={history}
-      renderItem={(timestamp)=><AccessItem
-        navigation={navigation}
-        time={timestamp.item.time}
-        authorized={timestamp.item.authorized}
-        date={timestamp.item.date}
-        res = {timestamp.item.img}
-        />
-      }
+        style={styles.itemList}
+        data={history}
+        renderItem={(timestamp) => (
+          <AccessItem
+            navigation={navigation}
+            time={timestamp.item.time}
+            authorized={timestamp.item.authorized}
+            date={timestamp.item.date}
+            res={timestamp.item.img}
+          />
+        )}
       />
     </SafeAreaView>
   );

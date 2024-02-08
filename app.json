@@ -15,15 +15,11 @@
       [
         "expo-font",
         {
-          "fonts": [
-            "./assets/fonts/lexend.ttf"
-          ]
+          "fonts": ["./assets/fonts/lexend.ttf"]
         }
       ]
     ],
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },

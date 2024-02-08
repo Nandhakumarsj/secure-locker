@@ -39,7 +39,7 @@ export default function AuthorizedUsers({ navigation }) {
         <Text style={styles.headerTxt}>Authorized Users</Text>
       </View>
       <FlatList
-      style={{margin:4}}
+        style={{ margin: 4 }}
         data={userItems}
         renderItem={(userItem) => (
           <UserDetails
@@ -71,6 +71,6 @@ const styles = StyleSheet.create({
     fontFamily: "lexend",
     fontSize: 23,
     marginVertical: 10,
-    marginHorizontal:15
+    marginHorizontal: 15,
   },
 });

@@ -79,15 +79,13 @@ export default function App() {
     );
     notificationListener.current =
       Notifications.addNotificationReceivedListener((notification) => {
-        setNotification(
-          notification
-          );
+        setNotification(notification);
         data = notification.request.content.data;
         appendHistory({
           time: data["time"],
           authorized: data["auth"],
-          date: data['date'],
-          img: data['img']
+          date: data["date"],
+          img: data["img"],
         });
       });
 
@@ -98,8 +96,8 @@ export default function App() {
         appendHistory({
           time: data["time"],
           authorized: data["auth"],
-          date: data['date'],
-          img: data['img']
+          date: data["date"],
+          img: data["img"],
         });
       });
 
