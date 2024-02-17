@@ -41,9 +41,9 @@ export default function AccessItem({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#123",
+    backgroundColor: "#fffa",
     borderRadius: 20,
-    borderColor: "#2aaa",
+    borderColor: "#aff8",
     borderWidth: 2,
     marginBottom: 15,
   },
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   txt: {
     fontFamily: "lexend",
     fontSize: 17,
-    color: "#afa",
+    color: "#290",
   },
   impTxt: {
     fontFamily: "lexend",

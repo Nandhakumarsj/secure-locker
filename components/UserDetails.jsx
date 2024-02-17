@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     maxWidth: 440,
     height: 260,
     flexDirection: "row",
-    backgroundColor: "#2b9b",
+    backgroundColor: "#fffa",
     borderRadius: 10,
     marginVertical: 10,
   },
