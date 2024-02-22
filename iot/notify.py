@@ -30,9 +30,9 @@ def send_notify(auth=False, imgFile=None):
         original = Image.open(imgFile)
         original.save("local_compressed.jpg", "JPEG", optimize=True, quality=5)
         img = cv2.imread("local_compressed.jpg")
-        # r = 50 / img.shape[1]
-        # dim = (50, int(img.shape[0] * r))
-        # img = cv2.resize(img, dim, interpolation=cv2.INTER_AREA)
+        r = 50 / img.shape[1]
+        dim = (50, int(img.shape[0] * r))
+        img = cv2.resize(img, dim, interpolation=cv2.INTER_AREA)
         img = cv2.imencode('.jpg', img)
         b64 = base64.b64encode(img[1]).decode('utf-8')
     data = {

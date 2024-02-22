@@ -1,4 +1,5 @@
 opencv-python   # Data Optimization
 requests        # For Data Transmission
 deepface        # For IOT/Edge Computing
-GPIO
+gpiozero
+picamera
