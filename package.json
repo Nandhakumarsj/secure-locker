@@ -19,12 +19,8 @@
     "expo-font": "^11.10.2",
     "expo-notifications": "^0.27.6",
     "expo-status-bar": "~1.11.1",
-    "express": "^4.18.2",
-    "multer": "^1.4.5-lts.1",
-    "mysql": "^2.18.1",
     "react": "18.2.0",
-    "react-native": "0.73.2",
-    "react-native-fs": "^2.20.0"
+    "react-native": "0.73.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
