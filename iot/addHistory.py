@@ -1,11 +1,18 @@
 import time
-import base64
-import cv2
 import requests
 
-image = cv2.imread('../local_compressed.jpg')
-image = cv2.imencode('.jpg', image)
-b64 = base64.b64decode()
-headers = {"Content-Type":"application/json"}
-data = {"time":time.strftime("%X %p"),
-        "content":image}
+def addHistory(filename:str, url:str):
+    with open(filename, 'rb') as image:
+        file = {
+                'image': image
+        }
+        res = requests.post(
+        url, files=file
+        )
+        if res.status_code == 200:
+            print('Uploaded')
+        else:
+            print('Not Uploaded')
+        
+file_name = time.strftime("%I-%M-%S-%p")
+addHistory(r'E:/Projects/IOT_Projects/secure-locker/assets/imgs/man1.jpg', f'http://127.0.0.1:3223/upload/{file_name}')
