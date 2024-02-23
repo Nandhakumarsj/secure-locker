@@ -16,8 +16,7 @@ for (const stamp in accessHistory) {
   history.push({
     time: accessHistory[stamp].time,
     authorized: accessHistory[stamp].authorized,
-    date: accessHistory[stamp].date,
-    img: accessHistory[stamp].img,
+    date: accessHistory[stamp].date
   });
 }
 
@@ -50,7 +49,6 @@ export default function AccessHistory({ navigation }) {
             time={timestamp.item.time}
             authorized={timestamp.item.authorized}
             date={timestamp.item.date}
-            res={timestamp.item.img}
           />
         )}
       />

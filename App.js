@@ -85,7 +85,6 @@ export default function App() {
           time: data["time"],
           authorized: data["auth"],
           date: data["date"],
-          img: data["img"],
         });
       });
 
@@ -97,7 +96,6 @@ export default function App() {
           time: data["time"],
           authorized: data["auth"],
           date: data["date"],
-          img: data["img"],
         });
       });
 

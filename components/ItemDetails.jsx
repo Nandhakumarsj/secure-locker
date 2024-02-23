@@ -10,7 +10,9 @@ import {
 } from "react-native";
 
 export default function ItemDetails({ route, navigation }) {
-  const { date, time, authorized, res } = route.params;
+  const { date, time, authorized,
+    //  res
+     } = route.params;
   return (
     <SafeAreaView style={styles.container}>
       <Pressable onPress={() => navigation.goBack()} style={styles.header}>
@@ -31,7 +33,7 @@ export default function ItemDetails({ route, navigation }) {
         <Text style={styles.contentBody}>Date Accessed : {date}</Text>
       </View>
       <View style={styles.imgContent}>
-        <Image
+        {/* <Image
           // source={require("../assets/imgs/man2.jpg")}
           source={{ uri: `data:image/png;base64,${res}` }}
           style={{
@@ -41,7 +43,7 @@ export default function ItemDetails({ route, navigation }) {
             resizeMode: "contain",
             borderRadius: 50,
           }}
-        />
+        /> */}
       </View>
     </SafeAreaView>
   );
