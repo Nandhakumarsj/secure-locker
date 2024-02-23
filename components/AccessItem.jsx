@@ -5,7 +5,7 @@ export default function AccessItem({
   time,
   authorized,
   date,
-  res,
+  // res,
 }) {
   const applyStyle = authorized ? styles.txt : styles.impTxt;
   return (
@@ -17,7 +17,7 @@ export default function AccessItem({
             time: time,
             authorized: authorized,
             date: date,
-            res: res,
+            // res: res,
           })
         }
       >

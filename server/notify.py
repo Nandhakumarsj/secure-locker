@@ -6,7 +6,7 @@ import time
 import requests
 from datetime import datetime
 
-def send_notify(auth=False):
+def send_notify(_time, date, auth=False):
     """Sends Notification to the Authorized Device
 
     Args:
@@ -20,7 +20,6 @@ def send_notify(auth=False):
         "Content-Type": "application/json"
     }
 
-    time_ = time.strftime('%I:%M:%S %p')
     # Default Body
     
     # if imgFile:
@@ -36,7 +35,7 @@ def send_notify(auth=False):
         # Push Token [Specific for each registered device]
         "to": "ExponentPushToken[0ZXeV9GdssX9V8E0j1c6G7]",
         # Image Data to be encoded in base-64(ASCII)
-        "data": {"auth": auth, 'date': f'{datetime.now()}', 'time': time_}
+        "data": {"auth": auth, 'time':_time, 'date': date}
     }
     # if imgFile:
     #     img = Image.open(imgFile)
@@ -76,5 +75,5 @@ def send_notify(auth=False):
 
 if __name__ == "__main__":
     while True:
-        if send_notify(auth=True):
+        if send_notify(auth=True, _time = time.stftime("%X %M %S %p"), date = datetime.now()):
             break
