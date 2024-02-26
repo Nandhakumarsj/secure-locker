@@ -5,7 +5,6 @@ export default function AccessItem({
   time,
   authorized,
   date,
-  // res,
 }) {
   const applyStyle = authorized ? styles.txt : styles.impTxt;
   return (
@@ -17,15 +16,14 @@ export default function AccessItem({
             time: time,
             authorized: authorized,
             date: date,
-            // res: res,
           })
         }
       >
         <View>
           {authorized ? (
-            <Text style={styles.txt}>Authorized Person Accessed</Text>
+            <Text style={styles.txt}>Authorized Person Detected</Text>
           ) : (
-            <Text style={styles.impTxt}>UnAuthorized Person Accessed</Text>
+            <Text style={styles.impTxt}>UnAuthorized Person Detected</Text>
           )}
         </View>
         <View>

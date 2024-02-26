@@ -12,13 +12,6 @@ import AccessItem from "../components/AccessItem";
 import accessHistory from "../assets/access-history.json";
 
 const history = [];
-for (const stamp in accessHistory) {
-  history.push({
-    time: accessHistory[stamp].time,
-    authorized: accessHistory[stamp].authorized,
-    date: accessHistory[stamp].date
-  });
-}
 
 function appendHistory(newData) {
   history.push(newData);
@@ -72,6 +65,7 @@ const styles = StyleSheet.create({
     fontFamily: "lexend",
     fontSize: 22,
     marginVertical: 10,
+    marginHorizontal:15
   },
   itemList: {
     marginLeft: 25,
