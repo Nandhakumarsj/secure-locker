@@ -1,6 +1,6 @@
 import notify
 import base64
-from flask import Flask, request, send_file
+from flask import Flask, request, jsonify, send_from_directory
 from PIL import Image
 # from deepface import DeepFace
 
@@ -15,14 +15,13 @@ to_notify = True
 
 @app.route('/<filename>', methods=['GET'])
 def home(filename):
-    img_dir = f"{database}/upload/{filename}.jpg"
+    img_dir = f"{database}/upload"
+    return send_from_directory(img_dir, f"{filename}.jpg")
+    # img_dir = f"{database}/upload/{filename}.jpg"
     # return send_file(img_dir, as_attachment=True)
-    to_send = {"file": ""}
-    with open(img_dir, 'rb') as img:
-        # return img
-        str_ = base64.b64encode(img.read())
-        to_send['file'] = str_.decode('utf-8')
-    return to_send
+    # with open(img_dir, 'rb') as img:
+    #     encoded_string = base64.b64encode(img.read()).decode()
+    # return jsonify({'image': encoded_string})
 
 
 @app.route('/upload/<filename>', methods=['POST'])
