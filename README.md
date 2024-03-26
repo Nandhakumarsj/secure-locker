@@ -13,9 +13,10 @@ graph TD;
     B --> C{Face Recognition};
     C --> D[UnAuthorized];
     C --> E[Authorized];
-    E --> B;
     D --> F[Upload Image to DB];
-    F --> B;
+    E --> G[Notification Handler];
+    F --> G;
+    G --> B;
 ```
 
 ## Technologies Used
