@@ -8,7 +8,7 @@ This IoT application is designed to use a Python background server for face reco
 
 The IoT camera captures an image of an individual and sends it to the Python background server. The server then uses facial recognition software to identify the individual in the image. If the individual is authorized, the server sends a notification to the authorized person. If the individual is not authorized, the server sends a notification to the client application along with the image captured by the IoT camera.
 ```mermaid
-Secure-Locker;
+graph TD;
     A[IoT Device] --> B(IoT Server);
     B --> C{Face Recognition};
     C --> D[UnAuthorized];
