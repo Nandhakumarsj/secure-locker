@@ -1,8 +1,7 @@
 import notify
-import base64
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, send_from_directory
 from PIL import Image
-# from deepface import DeepFace
+from deepface import DeepFace
 
 app = Flask("secure-locker")
 
@@ -10,7 +9,7 @@ database = r"E:/Projects/IOT_Projects/secure-locker/server"
 # findings = DeepFace.verify(database+'/users/man1.jpg',
 #                            database+'/users/man2.jpg')
 # to_notify = findings['verified']
-to_notify = True
+to_notify = False
 
 
 @app.route('/<filename>', methods=['GET'])
@@ -34,9 +33,14 @@ def upload(filename):
     img = img.resize((300, 300))
     img.save(img_dir, optimize=True)
     date, time = str(filename).split('-', 1)
-    # to_notify = DeepFace.verify(
-    #     database+f'/upload/{filename}.jpg', database+'/users/man2.jpg')['verified']
-    notify.send_notify(time, date, auth=to_notify)
+    try:
+        to_notify = DeepFace.verify(
+            database+f'/upload/{filename}.jpg', database+'/users/man2.jpg')['verified']
+        notify.send_notify(time, date, auth=to_notify)
+    except ValueError:
+        print('Face Not Detected!')
+        to_notify = False
+        notify.send_notify(time, date, auth=to_notify)
     return 'uploaded'
 
 

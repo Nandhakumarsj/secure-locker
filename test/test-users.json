@@ -1,0 +1,16 @@
+{
+    "Users": {
+        "Job": {
+            "id": "1",
+            "name": "Job J",
+            "dob": "01/01/2004",
+            "dateEnrolled": "02/02/2024"
+        },
+        "Chiran": {
+            "id": "2",
+            "name": "Chiranchievi S",
+            "dob": "02/01/2004",
+            "dateEnrolled": "02/02/2024"
+        }
+    }
+}

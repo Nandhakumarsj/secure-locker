@@ -90,7 +90,7 @@ export default function App() {
 
     responseListener.current =
       Notifications.addNotificationResponseReceivedListener((response) => {
-        console.log(response.notification.request.content.data); // Add Access History Item [res.noti.req.con.data]
+        // console.log(response.notification.request.content.data); // Add Access History Item [res.noti.req.con.data]
         data = response.notification.request.content.data;
         appendHistory({
           time: data["time"],
