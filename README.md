@@ -30,3 +30,8 @@ graph TD;
 ## Benefits
 
 This IoT application provides a secure way of identifying individuals. The use of facial recognition software ensures that only authorized individuals are allowed access. Additionally, the use of the IoT camera allows for remote monitoring of individuals, providing an added layer of security.
+
+### Heads Up
+
+Your data is our concern so rather be confident in using our system.
+View security policy as well.
