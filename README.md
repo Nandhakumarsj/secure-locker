@@ -1,4 +1,4 @@
-# IoT Application    
+# IoT Application
 
 ## Description
 
@@ -7,6 +7,7 @@ This IoT application is designed to use a Python background server for face reco
 ## How it Works
 
 The IoT camera captures an image of an individual and sends it to the Python background server. The server then uses facial recognition software to identify the individual in the image. If the individual is authorized, the server sends a notification to the authorized person. If the individual is not authorized, the server sends a notification to the client application along with the image captured by the IoT camera.
+
 ```mermaid
 graph TD;
     A[IoT Device] --> B(IoT Server);
@@ -30,3 +31,8 @@ graph TD;
 ## Benefits
 
 This IoT application provides a secure way of identifying individuals. The use of facial recognition software ensures that only authorized individuals are allowed access. Additionally, the use of the IoT camera allows for remote monitoring of individuals, providing an added layer of security.
+
+### Heads Up
+
+Your data is our concern so rather be confident in using our system.
+View security policy as well.

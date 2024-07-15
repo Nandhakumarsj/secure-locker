@@ -1,5 +1,18 @@
 # Security Policy
 
+<<<<<<< HEAD
+We don't use your data for training our algorithm and we don't use analytics in our application as well.
+
+## Supported Versions
+
+| Version | Supported          |
+| ------- | ------------------ |
+| 1.x   | :white_check_mark: |
+
+## Reporting a Vulnerability
+
+Report a bug or issue to `excelnandhu@gmail.com`
+=======
 ## Supported Versions
 
 Use this section to tell people about which versions of your project are
@@ -19,3 +32,4 @@ Use this section to tell people how to report a vulnerability.
 Tell them where to go, how often they can expect to get an update on a
 reported vulnerability, what to expect if the vulnerability is accepted or
 declined, etc.
+>>>>>>> 28c6f01b010ce7cf0aeb7503512372070a2a35b0
