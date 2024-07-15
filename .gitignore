@@ -33,13 +33,5 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
-
-#build
-android/
-.expo/
-
-#services
 google-services.json
-
-#cache
 server/__pycache__
