@@ -28,7 +28,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.nandhakumarsj.securelocker",
+      "package": "com.sjnk.securelocker",
       "googleServicesFile": "./google-services.json"
     },
     "web": {
