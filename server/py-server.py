@@ -9,7 +9,6 @@ database = r"E:/Projects/IOT_Projects/secure-locker/server"
 # findings = DeepFace.verify(database+'/users/man1.jpg',
 #                            database+'/users/man2.jpg')
 # to_notify = findings['verified']
-to_notify = False
 
 
 @app.route('/<filename>', methods=['GET'])
@@ -34,8 +33,11 @@ def upload(filename):
     img.save(img_dir, optimize=True)
     date, time = str(filename).split('-', 1)
     try:
-        to_notify = DeepFace.verify(
-            database+f'/upload/{filename}.jpg', database+'/users/man2.jpg')['verified']
+        for i in range(5):
+            to_notify = DeepFace.verify(
+                database+f'/upload/{filename}.jpg', database+f'/users/{i}.jpg')['verified']
+            if to_notify:
+                break
         notify.send_notify(time, date, auth=to_notify)
     except ValueError:
         print('Face Not Detected!')
