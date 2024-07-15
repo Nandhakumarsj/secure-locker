@@ -35,4 +35,8 @@ This IoT application provides a secure way of identifying individuals. The use o
 ### Heads Up
 
 Your data is our concern so rather be confident in using our system.
+<<<<<<< HEAD
 View security policy as well.
+=======
+View security policy as well.
+>>>>>>> 0e7cab40e79e6b4ea62af7002e40ec055d61b240
